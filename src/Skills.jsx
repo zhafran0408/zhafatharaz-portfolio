@@ -32,10 +32,11 @@ export default function MySkills() {
       id="skills"
       className="min-h-screen bg-white text-gray-800 py-20 px-6 md:px-16"
     >
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 text-center">
-          My Skills & Tools
-        </h2>
+      <div className="max-w-6xl mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-4">My Skills & Tools</h2>
+        <p className="text-gray-600 mb-12 text-lg">
+          keahlian yang saya kuasai dan masih terus di asah
+        </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 mb-16">
           {skills.map((skill) => (

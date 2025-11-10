@@ -13,7 +13,6 @@ export default function Home() {
     const currentText = texts[textIndex];
     let timeout;
 
-    // efek ngetik / hapus
     if (isDeleting) {
       timeout = setTimeout(
         () => setDisplayedText(currentText.slice(0, displayedText.length - 1)),
@@ -25,8 +24,6 @@ export default function Home() {
         60
       );
     }
-
-    // selesai ngetik, tunggu sebelum hapus
     if (!isDeleting && displayedText === currentText) {
       timeout = setTimeout(() => setIsDeleting(true), 1500);
     } else if (isDeleting && displayedText === "") {
@@ -37,7 +34,6 @@ export default function Home() {
     return () => clearTimeout(timeout);
   }, [displayedText, isDeleting, textIndex]);
 
-  // scroll ke project
   const handleScrollToProjects = () => {
     const section = document.getElementById("projects");
     if (section) {
@@ -45,7 +41,6 @@ export default function Home() {
     }
   };
 
-  // scroll ke social media
   const handleScrollToSocial = () => {
     const section = document.getElementById("socialmedia");
     if (section) {
@@ -58,9 +53,9 @@ export default function Home() {
       id="home"
       className="min-h-screen bg-white text-gray-800 flex flex-col justify-center"
     >
-      {/* Bagian Hero */}
+     
       <div className="flex flex-col md:flex-row items-center justify-center md:justify-between max-w-6xl mx-auto px-6 py-20 md:py-28">
-        {/* Foto (hanya desktop) */}
+        
         <div className="hidden md:flex justify-center w-1/2">
           <img
             src={portfolioImage}
@@ -69,7 +64,7 @@ export default function Home() {
           />
         </div>
 
-        {/* Teks + Tombol */}
+        
         <div className="text-center md:text-left md:w-1/2">
           <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4 h-[120px]">
             {displayedText}

@@ -51,6 +51,7 @@ export default function Navbar() {
           <li><button onClick={() => handleScroll("home")}>Home</button></li>
           <li><button onClick={() => handleScroll("projects")} >Projects</button></li>
           <li><button onClick={() => handleScroll("skills")} >Skills</button></li>
+          <li><button onClick={() => handleScroll("social")}>Hubungi Saya</button></li>
         </ul>
       </div>
 
@@ -72,6 +73,7 @@ export default function Navbar() {
           <li><button onClick={() => handleScroll("home")}>Home</button></li>
           <li><button onClick={() => handleScroll("projects")}>Projects</button></li>
           <li><button onClick={() => handleScroll("skills")}>Skills</button></li>
+           <li><button onClick={() => handleScroll("social")}>Hubungi Saya</button></li>
         </ul>
       </div>
     </nav>

@@ -15,7 +15,7 @@ export default function SocialMedia() {
     {
       name: "LinkedIn",
       img: linkedin,
-      link: "https://www.linkedin.com/in/zhafran-atha-razin-hadiny/",
+      link: "https://www.linkedin.com/in/zhafran-atha-razin-hadiny-93315b385",
     },
     {
       name: "GitHub",
@@ -30,7 +30,7 @@ export default function SocialMedia() {
     {
       name: "Gmail",
       img: gmail,
-      link: "mailto:alamatemailkamuzhafranatharazin@gmail.com",
+      link: "mailto:zhafranatharazin@gmail.com",
     },
   ];
 
@@ -45,8 +45,8 @@ export default function SocialMedia() {
 
       <p className="text-gray-600 max-w-xl text-center mb-10 leading-relaxed">
         Yuk, ngobrol santai! 🚀  
-        Bisa soal proyek bareng, ide kreatif, atau sekadar tukar pikiran.  
-        Klik aja yang di bawah ini aku selalu siap connect! ✨
+        Bisa soal proyek bareng, ide kreatif, konten bareng, atau sekadar menyapa.  
+        Klik aja yang di bawah ini insya Allah selalu connect!👌
       </p>
 
       <div className="flex flex-wrap justify-center gap-8">

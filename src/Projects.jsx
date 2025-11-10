@@ -29,6 +29,9 @@ export default function Projects() {
     <section id="projects" className="py-20 bg-white text-gray-800">
       <div className="max-w-5xl mx-auto text-center px-6">
         <h2 className="text-3xl font-bold mb-10 text-gray-800">My Projects</h2>
+        <p className="text-gray-600  text-center mb-10">
+          Beberapa proyek yang telah saya buat dalam bidang pendidikan dan teknologi.
+        </p>
         <div className="grid md:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div
@@ -61,4 +64,3 @@ export default function Projects() {
     </section>
   );
 }
-
