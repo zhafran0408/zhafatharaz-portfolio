@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import portfolioImage from "./assets/profil.png";
-import profileImage from "./assets/profil.png";
 
 export default function Home() {
   const texts = ["Halo, Saya Zhafran Atha Razin Hadiny"];
-
   const [textIndex, setTextIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -24,6 +22,7 @@ export default function Home() {
         60
       );
     }
+
     if (!isDeleting && displayedText === currentText) {
       timeout = setTimeout(() => setIsDeleting(true), 1500);
     } else if (isDeleting && displayedText === "") {
@@ -41,30 +40,23 @@ export default function Home() {
     }
   };
 
-  const handleScrollToSocial = () => {
-    const section = document.getElementById("socialmedia");
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section
       id="home"
-      className="min-h-screen bg-white text-gray-800 flex flex-col justify-center"
+      className="relative flex flex-col justify-center bg-gradient-to-b from-white to-gray-100 text-gray-800 overflow-hidden"
     >
-     
-      <div className="flex flex-col md:flex-row items-center justify-center md:justify-between max-w-6xl mx-auto px-6 py-20 md:py-28">
-        
+      {/* Bagian utama */}
+      <div className="flex flex-col md:flex-row items-center justify-center md:justify-between max-w-6xl mx-auto px-6 py-28">
+        {/* Foto profil */}
         <div className="hidden md:flex justify-center w-1/2">
           <img
             src={portfolioImage}
             alt="Foto Portfolio"
-            className="rounded-full border-4 border-gray-800 shadow-xl w-80 h-80 object-cover"
+            className="rounded-full border-4 border-gray-800 shadow-2xl w-80 h-80 object-cover"
           />
         </div>
 
-        
+        {/* Teks perkenalan */}
         <div className="text-center md:text-left md:w-1/2">
           <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4 h-[120px]">
             {displayedText}
@@ -80,7 +72,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <button
               onClick={handleScrollToProjects}
-              className="bg-gray-800 text-white px-6 py-3 rounded-xl shadow-md"
+              className="bg-gray-800 text-white px-6 py-3 rounded-xl shadow-md hover:bg-gray-700 transition"
             >
               View Projects
             </button>
@@ -91,7 +83,7 @@ export default function Home() {
                 const section = document.getElementById("social");
                 section?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="border-2 bg-gray-800 text-white px-6 py-3 rounded-xl transition"
+              className="border-2 border-gray-800 text-gray-800 px-6 py-3 rounded-xl hover:bg-gray-800 hover:text-white transition"
             >
               Hubungi Saya
             </a>
@@ -99,12 +91,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-gray-50 py-20 px-6 text-center">
+      {/* Tentang Saya */}
+      <div className="bg-gray-50 py-20 px-6 text-center relative z-10 border-t border-gray-200">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Tentang Saya</h2>
         <div className="max-w-2xl mx-auto">
-          <div className="flex justify-center mb-6 md:hidden ">
+          <div className="flex justify-center mb-6 md:hidden">
             <img
-              src={profileImage}
+              src={portfolioImage}
               alt="Foto Profil"
               className="w-40 h-40 rounded-full border-4 border-gray-800 shadow-md object-cover"
             />
@@ -112,15 +105,23 @@ export default function Home() {
           <p className="text-gray-600 leading-relaxed">
             Saya adalah seorang pelajar yang aktif dan terus mengembangkan diri
             melalui berbagai proyek teknologi serta kegiatan ekstrakurikuler.
-            Saya memiliki ketertarikan pada
-            <span className="font-semibold ">desain UI/UX</span>,
-            <span className="font-semibold">pengembangan web</span>, dan
-            <span className="font-semibold "> fotografi</span>. Selain itu, saya
-            juga berupaya untuk membangun solusi digital yang bermanfaat bagi
-            banyak orang sekaligus memperdalam kemampuan di bidang akademik.
+            Saya memiliki ketertarikan pada{" "}
+            <span className="font-semibold text-gray-900">desain UI/UX</span>,
+            <span className="font-semibold text-gray-900">
+              {" "}pengembangan web
+            </span>
+            , dan
+            <span className="font-semibold text-gray-900"> fotografi</span>.
+            Selain itu, saya juga berupaya membangun solusi digital yang
+            bermanfaat bagi banyak orang serta memperdalam kemampuan akademik
+            saya.
           </p>
         </div>
       </div>
+
+      
+      <div className="border-t border-gray-300 w-4/5 mx-auto my-12"></div>
     </section>
   );
 }
+

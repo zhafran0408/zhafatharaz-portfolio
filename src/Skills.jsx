@@ -54,6 +54,7 @@ export default function MySkills() {
           ))}
         </div>
       </div>
+         <div className="border-t border-gray-300 w-4/5 mx-auto my-12"></div>
     </section>
   );
 }

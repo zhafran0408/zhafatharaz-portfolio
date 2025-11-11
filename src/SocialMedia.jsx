@@ -30,23 +30,21 @@ export default function SocialMedia() {
     {
       name: "Gmail",
       img: gmail,
-      link: "mailto:zhafranatharazin@gmail.com",
+      link: "zhafranatharazin@gmail.com",
     },
   ];
 
-   return (
+  return (
     <section
       id="social"
       className="min-h-[80vh] flex flex-col items-center justify-center bg-white text-gray-800 py-20 px-6"
     >
-      <h2 className="text-3xl font-bold mb-4 text-center">
-        Hubungi Saya
-      </h2>
+      <h2 className="text-3xl font-bold mb-4 text-center">Hubungi Saya</h2>
 
       <p className="text-gray-600 max-w-xl text-center mb-10 leading-relaxed">
-        Yuk, ngobrol santai! 🚀  
-        Bisa soal proyek bareng, ide kreatif, konten bareng, atau sekadar menyapa.  
-        Klik aja yang di bawah ini insya Allah selalu connect!👌
+        Yuk, ngobrol santai! 🚀 Bisa soal proyek bareng, ide kreatif, konten
+        bareng, atau sekadar menyapa. Klik aja yang di bawah ini insya Allah
+        selalu connect!👌
       </p>
 
       <div className="flex flex-wrap justify-center gap-8">
@@ -67,6 +65,17 @@ export default function SocialMedia() {
           </a>
         ))}
       </div>
+         <div className="border-t border-gray-300 w-4/5 mx-auto my-12"></div>
+
+      <footer className="border-t border-gray-200 bg-white text-center py-6 mt-10">
+        <p className="text-gray-700 font-medium">
+          “Dari lensa dan baris kode, saya belajar: detail kecil bisa membentuk
+          karya besar.
+        </p>
+        <p className="text-gray-400 text-sm mt-1">
+          © 2025 Zhafran Atha Razin Hadiny
+        </p>
+      </footer>
     </section>
   );
 }
