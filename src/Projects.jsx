@@ -2,7 +2,7 @@ import React from "react";
 import bluecalcImg from "./assets/bluecalc.png";
 import cekgulakuImg from "./assets/cekgulaku.png";
 import eduverseImg from "./assets/eduverse.png";
-import slicingImg from "./assets/latihan-slicing.png"
+import slicingImg from "./assets/slicing.png"
 export default function Projects() {
   const projects = [
     {
@@ -101,7 +101,7 @@ export default function Projects() {
             </div>
           ))}
         </div>
-        {/* === END SCROLL === */}
+      
       </div>
 
       <div className="border-t border-gray-300 w-4/5 mx-auto my-12"></div>
