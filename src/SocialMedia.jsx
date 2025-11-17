@@ -65,7 +65,7 @@ export default function SocialMedia() {
           </a>
         ))}
       </div>
-         <div className="border-t border-gray-300 w-4/5 mx-auto my-12"></div>
+      <div className="border-t border-gray-300 w-4/5 mx-auto my-12"></div>
 
       <footer className="border-t border-gray-200 bg-white text-center py-6 mt-10">
         <p className="text-gray-700 font-medium">

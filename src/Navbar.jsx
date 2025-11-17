@@ -23,9 +23,9 @@ export default function Navbar() {
       <div className="flex items-center justify-between px-6 py-3">
         <h1 className="text-xl font-bold text-gray-800">Zhafatharaz</h1>
 
-        {/* Tombol Hamburger + Animasi */}
+        
         <div className="relative w-8 h-8 md:hidden z-[60]">
-          {/* Hamburger */}
+          
           <img
             src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png"
             alt="menu"
@@ -35,7 +35,7 @@ export default function Navbar() {
             } ${animating && !isOpen ? "animate-spinClose" : ""}`}
           />
 
-          {/* Close (X) */}
+          
           <img
             src="https://cdn-icons-png.flaticon.com/512/1828/1828778.png"
             alt="close"
@@ -46,7 +46,7 @@ export default function Navbar() {
           />
         </div>
 
-        {/* Menu Desktop */}
+        
         <ul className="hidden md:flex space-x-8 text-gray-800 font-medium">
           <li><button onClick={() => handleScroll("home")}>Home</button></li>
           <li><button onClick={() => handleScroll("projects")} >Projects</button></li>
@@ -55,7 +55,7 @@ export default function Navbar() {
         </ul>
       </div>
 
-      {/* Overlay gelap */}
+      
       <div
         onClick={() => setIsOpen(false)}
         className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
@@ -63,7 +63,6 @@ export default function Navbar() {
         } md:hidden z-40`}
       ></div>
 
-      {/* Menu Mobile */}
       <div
         className={`fixed top-0 right-0 h-full bg-white shadow-lg transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-full"

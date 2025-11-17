@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import portfolioImage from "./assets/profil.png";
+import portfolioImage from "./assets/profil.webp";
 
 export default function Home() {
   const texts = ["Halo, Saya Zhafran Atha Razin Hadiny"];
@@ -45,9 +45,9 @@ export default function Home() {
       id="home"
       className="relative flex flex-col justify-center bg-gradient-to-b from-white to-gray-100 text-gray-800 overflow-hidden"
     >
-      {/* Bagian utama */}
+      
       <div className="flex flex-col md:flex-row items-center justify-center md:justify-between max-w-6xl mx-auto px-6 py-28">
-        {/* Foto profil */}
+        
         <div className="hidden md:flex justify-center w-1/2">
           <img
             src={portfolioImage}
@@ -56,7 +56,7 @@ export default function Home() {
           />
         </div>
 
-        {/* Teks perkenalan */}
+        
         <div className="text-center md:text-left md:w-1/2">
           <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4 h-[120px]">
             {displayedText}
@@ -91,7 +91,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Tentang Saya */}
+     
       <div className="bg-gray-50 py-20 px-6 text-center relative z-10 border-t border-gray-200">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Tentang Saya</h2>
         <div className="max-w-2xl mx-auto">

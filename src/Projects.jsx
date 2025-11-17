@@ -2,7 +2,7 @@ import React from "react";
 import bluecalcImg from "./assets/bluecalc.png";
 import cekgulakuImg from "./assets/cekgulaku.png";
 import eduverseImg from "./assets/eduverse.png";
-
+import slicingImg from "./assets/latihan-slicing.png"
 export default function Projects() {
   const projects = [
     {
@@ -13,15 +13,22 @@ export default function Projects() {
     },
     {
       title: "CekGulaKu",
-      desc: "Website cek risiko diabetes yang membantu pengguna menjaga kesehatan dan dibuat sederhana.",
+      desc: "Website cek risiko diabetes sederhana dan informatif.",
       img: cekgulakuImg,
       link: "https://cekgulaku.vercel.app/",
     },
     {
       title: "Eduverse",
-      desc: "Platform edukasi digital dengan tampilan interaktif dan informatif. Website ini masih dalam tahap pengembangan.",
+      desc: "Platform edukasi digital dengan tampilan interaktif. Masih dalam tahap pengembangan.",
       img: eduverseImg,
       link: "https://fawwazrn.github.io/EDUVERSE/",
+    },
+
+    {
+      title: "Latihan-slicing",
+      desc: "Project latihan untuk meningkatkan skill slicing layout dan memahami struktur UI.",
+      img: slicingImg,
+      link: "https://slicing-tailwind-lilac.vercel.app/",
     },
   ];
 
@@ -30,7 +37,7 @@ export default function Projects() {
       id="projects"
       className="relative py-24 bg-gray-50 text-gray-800"
     >
-      {/* Wave divider dari atas */}
+      {/* Top Wave */}
       <div className="absolute -top-1 left-0 w-full overflow-hidden leading-none">
         <svg
           viewBox="0 0 1440 320"
@@ -53,40 +60,54 @@ export default function Projects() {
           dirancang untuk memberikan pengalaman digital yang modern dan bermanfaat.
         </p>
 
-        {/* Grid project cards */}
-        <div className="grid md:grid-cols-3 gap-8">
+       
+        <div className="flex gap-8 overflow-x-auto snap-x snap-mandatory px-2 pb-4 
+                        scrollbar-thin scrollbar-thumb-gray-300">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group border border-gray-200 rounded-2xl shadow-md p-6 bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+              className="min-w-[280px] md:min-w-[330px] snap-center
+                         group border border-gray-200 rounded-2xl shadow-md p-6 bg-white 
+                         hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             >
+              
               <div className="overflow-hidden rounded-xl mb-4">
                 <img
                   src={project.img}
                   alt={project.title}
-                  className="w-full h-44 object-cover rounded-xl transform group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-44 object-cover rounded-xl transform 
+                             group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
+              {/* Title */}
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 {project.title}
               </h3>
+
+              {/* Desc */}
               <p className="text-gray-600 mb-5">{project.desc}</p>
+
+              {/* Button */}
               <a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-5 py-2 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-700 transition"
+                className="inline-block px-5 py-2 bg-gray-800 text-white rounded-lg font-medium 
+                           hover:bg-gray-700 transition"
               >
                 Lihat Website
               </a>
             </div>
           ))}
         </div>
+        {/* === END SCROLL === */}
       </div>
 
-         <div className="border-t border-gray-300 w-4/5 mx-auto my-12"></div>
+      <div className="border-t border-gray-300 w-4/5 mx-auto my-12"></div>
     </section>
   );
 }
+
+
 
