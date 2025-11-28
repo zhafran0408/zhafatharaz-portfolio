@@ -69,8 +69,7 @@ export default function SocialMedia() {
 
       <footer className="border-t border-gray-200 bg-white text-center py-6 mt-10">
         <p className="text-gray-700 font-medium">
-          “Dari lensa dan baris kode, saya belajar: detail kecil bisa membentuk
-          karya besar.
+          <span className="font-bold">Lelah</span> itu pasti tapi <span className="font-bold">menyerah</span>  bukan solusi.
         </p>
         <p className="text-gray-400 text-sm mt-1">
           © 2025 Zhafran Atha Razin Hadiny
