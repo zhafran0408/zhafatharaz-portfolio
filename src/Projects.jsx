@@ -56,8 +56,7 @@ export default function Projects() {
           My Projects
         </h2>
         <p className="text-gray-600 mb-14 text-lg">
-          Beberapa proyek yang telah saya kembangkan di bidang pendidikan dan teknologi,
-          dirancang untuk memberikan pengalaman digital yang modern dan bermanfaat.
+          Menciptakan pengalaman digital modern untuk pendidikan dan teknologi.
         </p>
 
        
