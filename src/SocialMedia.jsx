@@ -27,11 +27,7 @@ export default function SocialMedia() {
       img: whatsapp,
       link: "https://wa.me/0813 1721 7509",
     },
-    {
-      name: "Gmail",
-      img: gmail,
-      link: "zhafranatharazin@gmail.com",
-    },
+ 
   ];
 
   return (
