@@ -1,50 +1,45 @@
-import React, { useState } from "react";
-import Opening from "./opening";
-import Home from "./Home";
-import Projects from "./Projects";
-import Skills from "./Skills";
-import SocialMedia from "./SocialMedia";
-// 1. Import menu barunya (pastikan path filenya benar)
-import StaggeredMenu from "./components/StaggeredMenu"; 
+import React from 'react';
+import Navbar from './Navbar';
+import Home from './Home';
+import About from './About';
+import Projects from './Projects';
+import Skills from './Skills';
+import SocialMedia from './SocialMedia';
 
 export default function App() {
-  const [openingDone, setOpeningDone] = useState(false);
-
-  // 2. Siapkan data untuk menu navigasinya
-  const menuItems = [
-    { label: 'Home', link: '#home' },
-    { label: 'Projects', link: '#projects' },
-    { label: 'Skills', link: '#skills' },
-    { label: 'Contact', link: '#social' }
-  ];
-
-  const socialLinks = [
-    { label: 'Instagram', link: 'https://instagram.com/zhafatharaz' },
-    { label: 'GitHub', link: 'https://github.com/zhafatharaz' }
-  ];
-
-  if (!openingDone) {
-    return <Opening onFinish={() => setOpeningDone(true)} />;
-  }
-
   return (
-    <>
-      {/* 3. Ganti <Navbar /> lama dengan StaggeredMenu */}
-      <StaggeredMenu 
-        items={menuItems}
-        socialItems={socialLinks}
-        position="right"
-        accentColor="#5227FF"
-        colors={['#B19EEF', '#5227FF']} // Warna transisi panel
-        isFixed={true} 
-      />
-
+    // Tambahkan overflow-x-hidden supaya animasi samping gak bikin layar goyang
+    <div className="relative bg-[#F2F2F2] overflow-x-hidden">
+      <Navbar />
       
-      <div id="home"><Home /></div>
-      <div id="projects"><Projects /></div>
-      <div id="skills"><Skills /></div>
-      <div id="social"><SocialMedia /></div>
-    </>
+      <main>
+        <section id="home">
+          <Home />
+        </section>
+
+        <section id="about">
+          {/* Pastikan di dalam About.jsx tidak ada error impor gambar */}
+          <About />
+        </section>
+
+        <section id="project">
+          <Projects />
+        </section>
+
+        <section id="skills">
+          <Skills />
+        </section>
+
+        <section id="contact">
+          <SocialMedia />
+        </section>
+      </main>
+
+      <footer className="py-10 text-center text-[10px] font-bold tracking-widest uppercase opacity-30">
+        © 2026 ZHAFATHARAZ*
+      </footer>
+    </div>
   );
 }
+
 

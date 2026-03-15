@@ -2,42 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional fade-in animasi tiap section */
-.fade-in-section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+
+:root {
+  --bg-light: #F2F2F2;
+  --bg-dark: #1A1A1A;
 }
 
-.fade-in-section.show {
-  opacity: 1;
-  transform: translateY(0);
+body {
+  background-color: var(--bg-light);
+  color: #1A1A1A;
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
 }
 
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Judul Section dengan Kotak */
+.section-title-box {
+  @apply border-2 border-black px-10 py-2 inline-block font-black uppercase tracking-[0.4em] mb-16 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)];
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out forwards;
-}
-
-
-.fade-up {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.9s ease-out;
-}
-
-.fade-up.show {
-  opacity: 1;
-  transform: translateY(0);
+/* Input Minimalis */
+.input-elegant {
+  @apply w-full border-b-2 border-black bg-transparent py-3 focus:outline-none uppercase text-xs font-bold tracking-widest placeholder-gray-400;
 }
 
