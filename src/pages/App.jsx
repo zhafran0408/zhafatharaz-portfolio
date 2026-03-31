@@ -8,7 +8,6 @@ import SocialMedia from './SocialMedia';
 
 export default function App() {
   return (
-    // Tambahkan overflow-x-hidden supaya animasi samping gak bikin layar goyang
     <div className="relative bg-[#F2F2F2] overflow-x-hidden">
       <Navbar />
       
@@ -18,7 +17,7 @@ export default function App() {
         </section>
 
         <section id="about">
-          {/* Pastikan di dalam About.jsx tidak ada error impor gambar */}
+         
           <About />
         </section>
 
