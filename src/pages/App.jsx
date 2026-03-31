@@ -34,9 +34,6 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="py-10 text-center text-[10px] font-bold tracking-widest uppercase opacity-30">
-        © 2026 ZHAFATHARAZ*
-      </footer>
     </div>
   );
 }
