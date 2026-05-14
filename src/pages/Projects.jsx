@@ -34,7 +34,7 @@ const projectData = [
     category: 'E-Learning Platform',
     img: SkillifyImg, 
     description: 'Sistem manajemen pembelajaran (LMS) modern yang berfokus pada pengalaman pengguna dalam mengakses kursus online, tracking progres, dan manajemen materi.',
-    tech: ['React.js', 'Tailwind CSS', 'Context API'],
+    tech: ['React.js', 'Tailwind CSS'],
     link: 'https://skillify-learning.vercel.app' 
   },
   { 
