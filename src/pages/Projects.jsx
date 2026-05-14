@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- IMPORT GAMBAR ---
-// Pastikan path image ini benar sesuai struktur folder kamu
+// Ganti path ini sesuai dengan nama file foto yang kamu punya nanti
 import DynamicImg from '../assets/image/dynamic-profile-card.png';
+// import TaddaburImg from '../assets/image/taddabur.png'; // Placeholder
+// import SkillifyImg from '../assets/image/skillify.png'; // Placeholder
+// import WeatherImg from '../assets/image/weather.png';   // Placeholder
+// import NetflixImg from '../assets/image/netflix.png';   // Placeholder
 
 const projectData = [
   { 
@@ -15,21 +19,52 @@ const projectData = [
     tech: ['React.js', 'Tailwind CSS', 'Framer Motion'],
     link: 'https://instant-identity.vercel.app' 
   },
-  // Tambahkan project lainnya di sini dengan format yang sama
+  { 
+    id: 2, 
+    title: 'Taddabur Digital', 
+    category: 'Religious & Education',
+    img: TaddaburImg, 
+    description: 'Platform Al-Quran digital interaktif yang dirancang untuk memudahkan pengguna dalam membaca dan memahami ayat suci dengan antarmuka yang bersih dan bebas iklan.',
+    tech: ['React.js', 'Tailwind CSS', 'API Integration'],
+    link: 'https://taddabur-digital.vercel.app/' 
+  },
+  { 
+    id: 3, 
+    title: 'Skillify Learning', 
+    category: 'E-Learning Platform',
+    img: SkillifyImg, 
+    description: 'Sistem manajemen pembelajaran (LMS) modern yang berfokus pada pengalaman pengguna dalam mengakses kursus online, tracking progres, dan manajemen materi.',
+    tech: ['React.js', 'Tailwind CSS', 'Context API'],
+    link: 'https://skillify-learning.vercel.app' 
+  },
+  { 
+    id: 4, 
+    title: 'SkyCast Weather', 
+    category: 'Utility Tools',
+    img: WeatherImg, 
+    description: 'Aplikasi pemantau cuaca real-time yang menyajikan data akurat berdasarkan lokasi pengguna, lengkap dengan visualisasi kondisi atmosfer yang dinamis.',
+    tech: ['React.js', 'Tailwind CSS', 'OpenWeather API'],
+    link: 'https://weather-app-chi-two-19.vercel.app' 
+  },
+  { 
+    id: 5, 
+    title: 'Netflix Clone', 
+    category: 'Entertainment UI',
+    img: NetflixImg, 
+    description: 'Replikasi antarmuka streaming raksasa Netflix. Menampilkan katalog film yang dinamis menggunakan TMDB API dengan fitur trailer dan desain responsif tingkat tinggi.',
+    tech: ['React.js', 'Tailwind CSS', 'TMDB API'],
+    link: 'https://clonenetflix-app.vercel.app' 
+  },
 ];
 
 export default function Projects() {
   const [expandedId, setExpandedId] = useState(null);
 
-  // --- ANIMATION VARIANTS ---
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { 
-        staggerChildren: 0.3, 
-        delayChildren: 0.2 
-      }
+      transition: { staggerChildren: 0.2 }
     }
   };
 
@@ -43,7 +78,7 @@ export default function Projects() {
   };
 
   const cardVariants = {
-    hidden: { y: 60, opacity: 0 },
+    hidden: { y: 50, opacity: 0 },
     visible: { 
       y: 0, 
       opacity: 1,
@@ -61,14 +96,14 @@ export default function Projects() {
       variants={containerVariants}
     >
       
-      {/* BACKGROUND DECOR - Text 'Work' Besar di Belakang */}
+      {/* BACKGROUND TEXT DECOR */}
       <motion.div 
         initial={{ opacity: 0, x: 100 }}
         whileInView={{ opacity: 0.02, x: 0 }}
         transition={{ duration: 1.5 }}
         className="absolute top-0 left-0 pointer-events-none select-none"
       >
-        <h1 className="text-[25vw] font-black uppercase tracking-tighter leading-none text-white">Work</h1>
+        <h1 className="text-[25vw] font-black uppercase tracking-tighter leading-none">Work</h1>
       </motion.div>
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -96,16 +131,20 @@ export default function Projects() {
               variants={cardVariants}
               className="group flex flex-col"
             >
-              {/* IMAGE CARD - Rounded dikit (2xl) */}
+              {/* IMAGE CONTAINER */}
               <div className="relative overflow-hidden bg-[#0A0A0A] border border-white/5 aspect-[16/10] rounded-2xl group shadow-2xl">
                 <motion.img 
                   src={item.img} 
                   alt={item.title} 
-                  initial={{ filter: "grayscale(100%) blur(10px)", scale: 1.2 }}
+                  initial={{ filter: "grayscale(100%) blur(10px)", scale: 1.1 }}
                   whileInView={{ filter: "grayscale(100%) blur(0px)", scale: 1 }}
-                  whileHover={{ filter: "grayscale(0%)", scale: 1.05 }}
-                  transition={{ duration: 1.2 }}
-                  className="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition-all duration-700"
+                  animate={{ 
+                    filter: expandedId === item.id ? "grayscale(0%)" : "grayscale(100%)",
+                    opacity: expandedId === item.id ? 1 : 0.4,
+                    scale: expandedId === item.id ? 1.05 : 1
+                  }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="w-full h-full object-cover group-hover:opacity-100 transition-all duration-700"
                 />
 
                 {/* OVERLAY VISIT */}
@@ -113,15 +152,11 @@ export default function Projects() {
                   href={item.link} 
                   target="_blank" 
                   rel="noreferrer"
-                  className="absolute inset-0 bg-[#8B5CF6]/10 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-2px z-20"
+                  className="absolute inset-0 bg-[#8B5CF6]/10 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-sm z-20"
                 >
-                  <motion.div 
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="px-6 py-2 bg-[#8B5CF6] rounded-full text-[10px] font-black uppercase tracking-widest shadow-[0_0_20px_#8B5CF6] text-white"
-                  >
+                  <div className="px-6 py-2 bg-[#8B5CF6] rounded-full text-[10px] font-black uppercase tracking-widest shadow-[0_0_20px_#8B5CF6]">
                     View Live
-                  </motion.div>
+                  </div>
                 </a>
               </div>
 
@@ -129,25 +164,22 @@ export default function Projects() {
               <div className="mt-8 space-y-4 px-2">
                 <div className="flex justify-between items-end">
                   <div className="space-y-1">
-                    <motion.span 
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: 0.5 }}
-                      className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8B5CF6]"
-                    >
+                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8B5CF6]">
                       {item.category}
-                    </motion.span>
+                    </span>
                     <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter group-hover:italic transition-all duration-300">
                       {item.title}
                     </h3>
                   </div>
                   
-                  {/* BUTTON TOGGLE DESC */}
                   <button 
                     onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
-                    className="p-2 border border-white/10 rounded-full hover:border-[#8B5CF6] hover:text-[#8B5CF6] transition-all"
+                    className="p-3 border border-white/10 rounded-full hover:border-[#8B5CF6] hover:text-[#8B5CF6] transition-all bg-[#0A0A0A]"
                   >
-                    <motion.div animate={{ rotate: expandedId === item.id ? 180 : 0 }} transition={{ type: "spring", stiffness: 200 }}>
+                    <motion.div 
+                      animate={{ rotate: expandedId === item.id ? 180 : 0 }}
+                      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                    >
                       <svg width="18" height="18" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.5 12L7.14645 12.3536L7.5 12.7071L7.85355 12.3536L7.5 12ZM7.5 3V12M7.5 12L3.5 8M7.5 12L11.5 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                       </svg>
@@ -155,14 +187,13 @@ export default function Projects() {
                   </button>
                 </div>
 
-                {/* ACCORDION DESKRIPSI */}
                 <AnimatePresence>
                   {expandedId === item.id && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
                       className="overflow-hidden"
                     >
                       <p className="text-gray-400 text-sm md:text-base leading-relaxed italic border-l-2 border-[#8B5CF6]/30 pl-4 mb-6">
@@ -170,7 +201,7 @@ export default function Projects() {
                       </p>
                       <div className="flex flex-wrap gap-2 pb-2">
                         {item.tech.map((tag) => (
-                          <span key={tag} className="text-[9px] font-bold uppercase tracking-widest bg-white/5 border border-white/10 px-3 py-1 rounded-full text-gray-400">
+                          <span key={tag} className="text-[9px] font-bold uppercase tracking-widest bg-white/5 border border-white/10 px-3 py-1 rounded-full text-gray-500">
                             {tag}
                           </span>
                         ))}
@@ -179,13 +210,12 @@ export default function Projects() {
                   )}
                 </AnimatePresence>
 
-                {/* BOTTOM LINE ANIMATION */}
                 <motion.div 
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   transition={{ duration: 1 }}
                   style={{ originX: 0 }}
-                  className={`h-[1px] w-full ${expandedId === item.id ? 'bg-[#8B5CF6] shadow-[0_0_15px_#8B5CF6]' : 'bg-white/5'}`} 
+                  className={`h-[1px] w-full transition-colors duration-500 ${expandedId === item.id ? 'bg-[#8B5CF6] shadow-[0_0_15px_#8B5CF6]' : 'bg-white/5'}`} 
                 />
               </div>
             </motion.div>
