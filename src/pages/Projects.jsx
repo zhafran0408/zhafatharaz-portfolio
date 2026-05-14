@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- IMPORT GAMBAR ---
-// Ganti path ini sesuai dengan nama file foto yang kamu punya nanti
 import DynamicImg from '../assets/image/dynamic-profile-card.png';
-// import TaddaburImg from '../assets/image/taddabur.png'; // Placeholder
-// import SkillifyImg from '../assets/image/skillify.png'; // Placeholder
-// import WeatherImg from '../assets/image/weather.png';   // Placeholder
+import TaddaburImg from '../assets/image/tadabbur.png';
+import SkillifyImg from '../assets/image/skillify.png'; 
+import WeatherImg from '../assets/image/skypulse.png';   
 
 
 const projectData = [
@@ -39,7 +38,7 @@ const projectData = [
   },
   { 
     id: 4, 
-    title: 'SkyCast Weather', 
+    title: 'Skypulse Weather App', 
     category: 'Utility Tools',
     img: WeatherImg, 
     description: 'Aplikasi pemantau cuaca real-time yang menyajikan data akurat berdasarkan lokasi pengguna, lengkap dengan visualisasi kondisi atmosfer yang dinamis.',
