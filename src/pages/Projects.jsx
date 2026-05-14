@@ -7,7 +7,7 @@ import DynamicImg from '../assets/image/dynamic-profile-card.png';
 // import TaddaburImg from '../assets/image/taddabur.png'; // Placeholder
 // import SkillifyImg from '../assets/image/skillify.png'; // Placeholder
 // import WeatherImg from '../assets/image/weather.png';   // Placeholder
-// import NetflixImg from '../assets/image/netflix.png';   // Placeholder
+
 
 const projectData = [
   { 
@@ -45,15 +45,6 @@ const projectData = [
     description: 'Aplikasi pemantau cuaca real-time yang menyajikan data akurat berdasarkan lokasi pengguna, lengkap dengan visualisasi kondisi atmosfer yang dinamis.',
     tech: ['React.js', 'Tailwind CSS', 'OpenWeather API'],
     link: 'https://weather-app-chi-two-19.vercel.app' 
-  },
-  { 
-    id: 5, 
-    title: 'Netflix Clone', 
-    category: 'Entertainment UI',
-    img: NetflixImg, 
-    description: 'Replikasi antarmuka streaming raksasa Netflix. Menampilkan katalog film yang dinamis menggunakan TMDB API dengan fitur trailer dan desain responsif tingkat tinggi.',
-    tech: ['React.js', 'Tailwind CSS', 'TMDB API'],
-    link: 'https://clonenetflix-app.vercel.app' 
   },
 ];
 
