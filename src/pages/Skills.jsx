@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 
 // --- 1. IMPORT AREA ---
 import HtmlIcon from "../assets/icons/html.svg";
@@ -13,154 +13,162 @@ import CapcutIcon from "../assets/icons/capcut-icon.svg";
 import CanvaIcon from "../assets/icons/canva-icon.svg";
 
 export default function Skills() {
-  const [activeCategory, setActiveCategory] = useState("now");
-  const [activeIndex, setActiveIndex] = useState(null);
+  const codingSkills = [
+    { name: "HTML5", icon: HtmlIcon, spec: "Structure" },
+    { name: "CSS3", icon: CssIcon, spec: "Style" },
+    { name: "JavaScript", icon: JsIcon, spec: "Logic" },
+    { name: "React JS", icon: ReactIcon, spec: "Framework" },
+    { name: "Tailwind", icon: TailwindIcon, spec: "Utility" },
+  ];
 
-  // --- 2. DATA SKILL TERPISAH (BAHASA PROFESIONAL) ---
-  const skillCategories = {
-    now: {
-      label: "Using Now",
-      header: "Alur Kerja Utama",
-      description: "Skill utama yang sedang saya gunakan dan kembangkan secara konsisten untuk meningkatkan kualitas hasil kerja.",
-      skills: [
-        { name: "HTML5", icon: HtmlIcon },
-        { name: "CSS3", icon: CssIcon },
-        { name: "JavaScript", icon: JsIcon },
-        { name: "React JS", icon: ReactIcon },
-        { name: "Tailwind", icon: TailwindIcon },
-        { name: "Figma", icon: FigmaIcon },
-      ]
+  const creativeSkills = [
+    { name: "Figma", icon: FigmaIcon, type: "UI/UX & Asset" },
+    { name: "Adobe LR", icon: AdobeIcon, type: "Color Grading" },
+    { name: "Capcut", icon: CapcutIcon, type: "Motion Video" },
+    { name: "Canva", icon: CanvaIcon, type: "Fast Concept" },
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
     },
-    other: {
-      label: "Other Tools",
-      header: "Media Kreatif",
-      
-      description: "Perangkat pendukung untuk kebutuhan visual yang terus saya eksplor dan kembangkan untuk memperluas kreativitas.",
-      skills: [
-        { name: "Adobe LR", icon: AdobeIcon },
-        { name: "Capcut", icon: CapcutIcon },
-        { name: "Canva", icon: CanvaIcon },
-      ]
-    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+    },
   };
 
   return (
-    <section id="skills" className="py-24 px-6 md:px-20 bg-[#080808] overflow-hidden min-h-screen flex flex-col justify-center font-sans relative">
-      
-      {/* Dekorasi Latar Belakang - Hanya Visual */}
-      <div className="absolute top-10 left-10 opacity-[0.03] select-none pointer-events-none">
-        <h1 className="text-[15vw] font-black leading-none uppercase tracking-tighter">Stack</h1>
+    <motion.section
+      id="skills"
+      className="py-36 px-6 md:px-20 bg-[#080808] overflow-hidden min-h-screen flex flex-col justify-center font-sans relative border-b border-white/5"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={containerVariants}
+    >
+      {/* WATERMARK BACKGROUND DECORATION */}
+      <div className="absolute top-12 right-12 opacity-[0.01] pointer-events-none select-none font-mono text-right hidden md:block">
+        <p className="text-xs tracking-[0.5em] uppercase m-0">
+          ENGINE_SPEC // CORE
+        </p>
+        <p className="text-[12vw] font-black leading-none m-0">04</p>
       </div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
-        
-        {/* --- HEADER --- */}
-        <div className="mb-16">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            {/* JUDUL RINGKAS: "My Stack" atau "The Stack" */}
-            <h2 className="text-7xl md:text-[9rem] font-black tracking-tighter uppercase leading-[0.8] text-white">
-              The <br />
-              <span className="italic text-[#8B5CF6] font-black drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]">
-                Skills.
-              </span>
-            </h2>
-            
-            {/* --- TAB NAVIGATION (LEBIH CLEAN) --- */}
-            <div className="flex gap-10 mt-14 border-b border-white/5">
-              {Object.keys(skillCategories).map((key) => (
-                <button
-                  key={key}
-                  onClick={() => {
-                    setActiveCategory(key);
-                    setActiveIndex(null);
-                  }}
-                  className={`pb-4 text-[10px] md:text-sm font-black uppercase tracking-[0.4em] transition-all relative ${
-                    activeCategory === key ? "text-[#8B5CF6]" : "text-gray-600 hover:text-gray-400"
-                  }`}
-                >
-                  {skillCategories[key].label}
-                  {activeCategory === key && (
-                    <motion.div layoutId="activeTabGlow" className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#8B5CF6] shadow-[0_0_10px_#8B5CF6]" />
-                  )}
-                </button>
-              ))}
-            </div>
-
-            {/* Sub-Header & Deskripsi */}
-            <div className="mt-8 space-y-3 max-w-xl">
-              <h4 className="text-gray-100 font-black uppercase tracking-widest text-lg md:text-xl">
-                {skillCategories[activeCategory].header}
-              </h4>
-              <p className="text-gray-400 text-xs md:text-base leading-relaxed font-medium italic border-l-2 border-[#8B5CF6]/30 pl-4">
-                {skillCategories[activeCategory].description}
-              </p>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* --- GRID SKILLS (ANIMASI HALUS) --- */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 md:gap-6">
-          <AnimatePresence mode="wait">
-            {skillCategories[activeCategory].skills.map((skill, index) => {
-              const isActive = activeIndex === index;
-
-              return (
-                <motion.div
-                  key={`${activeCategory}-${index}`}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                  onMouseEnter={() => setActiveIndex(index)}
-                  onMouseLeave={() => setActiveIndex(null)}
-                  onClick={() => setActiveIndex(isActive ? null : index)}
-                  className={`relative border p-8 md:p-10 flex flex-col items-center justify-center transition-all duration-500 cursor-pointer select-none rounded-sm min-h-[140px] md:min-h-[180px] ${
-                    isActive ? "border-[#8B5CF6] bg-[#0A0A0A] -translate-y-2 shadow-[0_10px_40px_rgba(139,92,246,0.1)]" : "border-white/5 bg-transparent"
-                  }`}
-                >
-                  <div className="w-10 h-10 md:w-14 md:h-14 mb-4 md:mb-6 transition-all duration-500">
-                    <img
-                      src={skill.icon}
-                      alt={skill.name}
-                      className={`w-full h-full object-contain transition-all duration-500 ${
-                        isActive ? "grayscale-0 scale-110" : "grayscale opacity-30"
-                      }`}
-                    />
-                  </div>
-
-                  <h3 className={`text-[9px] md:text-[11px] font-black uppercase tracking-[0.2em] text-center leading-none ${
-                    isActive ? "text-[#8B5CF6]" : "text-gray-600 group-hover:text-gray-300"
-                  }`}>
-                    {skill.name}
-                  </h3>
-
-                  {isActive && (
-                    <motion.div
-                      layoutId="glow"
-                      className="absolute inset-0 bg-[#8B5CF6]/5 blur-2xl -z-10"
-                    />
-                  )}
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-        </div>
-
-        {/* --- FOOTER SKILLS (SOPAN) --- */}
-        <div className="mt-20 border-t border-white/5 pt-8 flex justify-between items-center">
-          <p className="text-[9px] font-bold text-gray-700 uppercase tracking-widest italic">
-            Continuous Improvement of Skill Set
+      <div className="max-w-6xl mx-auto w-full relative z-10">
+        {/* --- SECTION HEADER (MURNI SKILLS) --- */}
+        <div className="mb-28">
+          <h2 className="text-7xl md:text-8xl font-black tracking-tight uppercase leading-none text-white">
+            Skills
+            <span className="text-[#8B5CF6] drop-shadow-[0_0_10px_#8B5CF6]">
+              .
+            </span>
+          </h2>
+          <p className="text-xs font-mono text-gray-600 mt-4 tracking-widest uppercase block">
+            [ Core Stack & Creative Automation Matrix ]
           </p>
-          <div className="flex gap-4">
-            <div className="w-2 h-2 bg-[#8B5CF6] rounded-full animate-pulse shadow-[0_0_10px_#8B5CF6]"></div>
-            <div className="w-2 h-2 bg-white/5 rounded-full"></div>
+        </div>
+
+        {/* --- CATEGORY 1: ENGINEERING STACK (CODING) --- */}
+        <div className="mb-20">
+          <div className="flex items-center gap-4 mb-8 border-b border-white/5 pb-3">
+            <span className="font-mono text-[10px] text-[#8B5CF6] font-bold tracking-[0.3em] uppercase">
+              01 // ENGINEERING STACKS
+            </span>
+            <div className="h-[1px] flex-1 bg-gradient-to-r from-white/5 to-transparent" />
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 border-t border-l border-white/5">
+            {codingSkills.map((skill, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ backgroundColor: "rgba(139, 92, 246, 0.02)" }}
+                className="border-r border-b border-white/5 p-8 md:p-10 flex flex-col items-center justify-between relative group cursor-pointer min-h-[160px] md:min-h-[200px]"
+              >
+                <div className="w-full flex justify-between items-center opacity-40 group-hover:opacity-100 transition-opacity">
+                  <span className="font-mono text-[8px] text-gray-600 font-bold">
+                    [{skill.spec}]
+                  </span>
+                  <div className="w-1 h-1 bg-gray-700 group-hover:bg-[#8B5CF6] transition-colors" />
+                </div>
+
+                <div className="w-10 h-10 md:w-12 md:h-12 my-4">
+                  <img
+                    src={skill.icon}
+                    alt={skill.name}
+                    className="w-full h-full object-contain grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
+                  />
+                </div>
+
+                <h3 className="text-[10px] md:text-xs font-black uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors duration-300">
+                  {skill.name}
+                </h3>
+
+                <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#8B5CF6] transition-all duration-500 group-hover:w-full shadow-[0_0_8px_#8B5CF6]" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* --- CATEGORY 2: CREATIVE PRODUCTION (DESIGN & VIDEO) --- */}
+        <div>
+          <div className="flex items-center gap-4 mb-8 border-b border-white/5 pb-3">
+            <span className="font-mono text-[10px] text-[#8B5CF6] font-bold tracking-[0.3em] uppercase">
+              02 // CREATIVE PRODUCTION
+            </span>
+            <div className="h-[1px] flex-1 bg-gradient-to-r from-white/5 to-transparent" />
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 border-t border-l border-white/5">
+            {creativeSkills.map((skill, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ backgroundColor: "rgba(139, 92, 246, 0.02)" }}
+                className="border-r border-b border-white/5 p-8 md:p-10 flex flex-col items-center justify-between relative group cursor-pointer min-h-[160px] md:min-h-[200px]"
+              >
+                <div className="w-full flex justify-between items-center opacity-40 group-hover:opacity-100 transition-opacity">
+                  <span className="font-mono text-[8px] text-gray-600 font-bold">
+                    //{skill.type}
+                  </span>
+                  <div className="w-1 h-1 bg-gray-700 group-hover:bg-[#8B5CF6] transition-colors" />
+                </div>
+
+                <div className="w-10 h-10 md:w-12 md:h-12 my-4">
+                  <img
+                    src={skill.icon}
+                    alt={skill.name}
+                    className="w-full h-full object-contain grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
+                  />
+                </div>
+
+                <h3 className="text-[10px] md:text-xs font-black uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors duration-300">
+                  {skill.name}
+                </h3>
+
+                <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#8B5CF6] transition-all duration-500 group-hover:w-full shadow-[0_0_8px_#8B5CF6]" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* --- SECTION FOOTER --- */}
+        <div className="mt-32 pt-8 border-t border-white/5 flex justify-between items-center font-mono text-[8px] tracking-[0.4em] opacity-20">
+          <p className="uppercase">AUTOMATION & INTEGRATION VERIFIED</p>
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-[1px] bg-white" />
+            <span>PORTFOLIO CORE // 2026</span>
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

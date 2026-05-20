@@ -4,151 +4,149 @@ import { motion } from "framer-motion";
 export default function About() {
   const skills = [
     {
+      index: "01",
       title: "Web Development",
       desc: "Membangun sistem web yang responsif dan fungsional dengan fokus pada performa serta skalabilitas kode.",
     },
     {
+      index: "02",
       title: "UI/UX Design",
-      desc: "Merancang antarmuka pengguna yang intuitif dengan pendekatan visual yang bersih dan modern.",
+      desc: "Merancang antarmuka pengguna yang intuitif dengan pendekatan visual yang bersih, modern, dan sistemis.",
     },
     {
+      index: "03",
       title: "Media Creative",
-      desc: "Produksi konten visual dan digital branding untuk memperkuat identitas sebuah brand di platform digital.",
+      desc: "Produksi konten visual dan digital branding untuk memperkuat identitas sebuah produk di platform digital.",
     },
   ];
 
-  // Varian animasi untuk section utama
+  // Varian animasi container utama (Stagger effect)
   const sectionVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2, // Elemen anak muncul bergantian
-      },
+      transition: { staggerChildren: 0.15 },
     },
   };
 
-  // Varian animasi untuk teks judul 'About.'
+  // Judul utama reveal dari bawah ke atas
   const titleVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 100,
-      clipPath: "inset(100% 0% 0% 0%)" // Terpotong dari bawah
-    },
+    hidden: { opacity: 0, y: 60, clipPath: "inset(100% 0% 0% 0%)" },
     visible: { 
       opacity: 1, 
       y: 0,
-      clipPath: "inset(0% 0% 0% 0%)", // Terbuka penuh
-      transition: { 
-        duration: 1, 
-        ease: [0.22, 1, 0.36, 1] // Ease out quint yang halus
-      }
+      clipPath: "inset(0% 0% 0% 0%)",
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     },
   };
 
-  // Varian animasi untuk paragraf intro
-  const introVariants = {
-    hidden: { opacity: 0, x: -30 },
+  // Animasi deskripsi teks
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
-      x: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
     },
   };
 
-  // Varian animasi untuk kartu skill
-  const skillVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9 },
+  // Animasi grid card (Sederhana, presisi, berurutan)
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
-      y: 0, 
-      scale: 1,
-      transition: { duration: 0.6, ease: "backOut" } // Sedikit efek membal
+      y: 0,
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
     },
   };
 
   return (
     <motion.section
       id="about"
-      className="min-h-screen bg-[#080808] py-32 px-6 md:px-20 text-white relative overflow-hidden font-sans"
+      className="min-h-screen bg-[#080808] py-36 px-6 md:px-20 text-white relative overflow-hidden border-b border-white/5 font-sans"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }} // Muncul saat 30% section terlihat
+      viewport={{ once: true, amount: 0.2 }}
       variants={sectionVariants}
     >
-      
-      {/* BACKGROUND TEXT - Tipis Banget, Animasi Parallax Sederhana */}
-      <motion.div 
-        className="absolute top-0 right-0 opacity-[0.02] pointer-events-none select-none"
-        style={{ y: "-10%" }}
-        whileInView={{ y: "0%" }}
-        transition={{ duration: 2, ease: "easeOut" }}
-      >
-        <h1 className="text-[25vw] font-black uppercase tracking-tighter leading-none">About</h1>
-      </motion.div>
+      {/* GRID ACCENT LINE INDICATION */}
+      <div className="absolute top-0 left-1/4 w-[1px] h-full bg-white/[0.01] pointer-events-none hidden md:block" />
+      <div className="absolute top-0 left-2/4 w-[1px] h-full bg-white/[0.01] pointer-events-none hidden md:block" />
+      <div className="absolute top-0 left-3/4 w-[1px] h-full bg-white/[0.01] pointer-events-none hidden md:block" />
+
+      {/* WATERMARK BACKGROUND TEXT */}
+      <div className="absolute top-12 right-12 opacity-[0.01] pointer-events-none select-none font-mono text-right hidden sm:block">
+        <p className="text-xs tracking-[0.5em] uppercase m-0">SYS_OVERVIEW</p>
+        <p className="text-[12vw] font-black leading-none m-0">02</p>
+      </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
         
-        {/* HEADER: DIRECT INTRO */}
-        <div className="mb-20">
-          <motion.h2 
-            className="text-7xl md:text-[9rem] font-black tracking-tighter uppercase leading-[0.8] origin-bottom"
-            variants={titleVariants}
-          >
-            About<span className="text-[#8B5CF6]">.</span>
-          </motion.h2>
+        {/* --- HEADER BLOCK --- */}
+        <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-20 mb-28">
+          <div className="w-full md:w-1/3">
+            <motion.h2 
+              className="text-6xl md:text-8xl font-black tracking-tight uppercase leading-none"
+              variants={titleVariants}
+            >
+              About<span className="text-[#8B5CF6] drop-shadow-[0_0_10px_#8B5CF6]">.</span>
+            </motion.h2>
+          </div>
           
-          {/* INTRO NAME */}
-          <motion.div 
-            className="mt-12 max-w-3xl"
-            variants={introVariants}
-          >
-            <h3 className="text-2xl md:text-4xl font-bold mb-4">
-              Saya <span className="text-[#8B5CF6]">Zhafran Atha Razin Hadiny</span>.
-            </h3>
-            <p className="text-gray-400 text-lg md:text-xl leading-relaxed font-medium border-l-4 border-[#8B5CF6] pl-6 overflow-hidden">
-              <motion.span
-                initial={{ opacity: 0, y: "100%" }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-                className="block"
-              >
-                Seorang Developer dan Designer yang berfokus pada integrasi antara teknologi web, estetika visual, dan pengalaman pengguna yang efisien.
-              </motion.span>
-            </p>
-          </motion.div>
+          <div className="w-full md:w-2/3 md:pt-4">
+            <motion.div variants={textVariants} className="max-w-xl">
+              <h3 className="text-xl md:text-2xl font-bold mb-4 tracking-wide text-gray-200">
+                Hi, Saya <span className="text-[#8B5CF6]">Zhafran Atha Razin Hadiny</span>
+              </h3>
+              <p className="text-gray-400 text-sm md:text-base leading-relaxed font-medium tracking-wide">
+                Seorang Developer dan Designer yang mendedikasikan diri untuk menjembatani kode pemrograman berkinerja tinggi dengan estetika visual fungsional. Saya berfokus menciptakan produk digital yang intuitif, clean, dan berdampak nyata.
+              </p>
+            </motion.div>
+          </div>
         </div>
 
-        {/* GRID SKILLS: SIMPLE CAPSULE */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-24">
+        {/* --- CORE SKILLS BOXED GRID (Brutalist Architecture Layout) --- */}
+        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-white/5 mt-16 bg-[#0c0c0c]/30">
           {skills.map((item, index) => (
             <motion.div
               key={index}
-              variants={skillVariants}
-              whileHover={{ scale: 1.05, translateY: -10 }} // Animasi hover tambahan
-              className="group cursor-pointer"
+              variants={cardVariants}
+              whileHover={{ backgroundColor: "rgba(139, 92, 246, 0.02)" }}
+              className="p-8 md:p-10 border-r border-b border-white/5 relative flex flex-col justify-between group transition-colors duration-300 min-h-[260px]"
             >
-              <div className="inline-block px-6 py-2 rounded-full border border-white/10 text-white/40 font-black uppercase tracking-widest text-[10px] mb-6 group-hover:bg-[#8B5CF6] group-hover:text-white group-hover:border-[#8B5CF6] transition-all duration-500">
-                {item.title}
+              {/* Top Accent Lines */}
+              <div className="flex justify-between items-center mb-10">
+                <span className="font-mono text-xs text-gray-700 group-hover:text-[#8B5CF6] transition-colors duration-300">
+                  // {item.index}
+                </span>
+                <div className="w-1.5 h-1.5 bg-gray-800 group-hover:bg-[#8B5CF6] group-hover:shadow-[0_0_8px_#8B5CF6] transition-all rounded-none" />
               </div>
-              <p className="text-gray-500 group-hover:text-gray-300 transition-colors duration-500 text-sm leading-relaxed">
-                {item.desc}
-              </p>
+
+              {/* Teks Konten */}
+              <div>
+                <h4 className="text-lg font-black uppercase tracking-wider text-white mb-3 group-hover:translate-x-1 transition-transform duration-300">
+                  {item.title}
+                </h4>
+                <p className="text-gray-500 group-hover:text-gray-400 transition-colors duration-300 text-xs md:text-sm leading-relaxed font-medium">
+                  {item.desc}
+                </p>
+              </div>
+
+              {/* Decorative corner line hover effect */}
+              <div className="absolute bottom-0 right-0 w-0 h-[2px] bg-[#8B5CF6] transition-all duration-300 group-hover:w-12 shadow-[0_0_8px_#8B5CF6]" />
             </motion.div>
           ))}
         </div>
 
-        {/* FOOTER: MOOD */}
+        {/* --- FOOTER OVERLAY --- */}
         <motion.div 
-          className="mt-32 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 opacity-30"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.3 }}
-          transition={{ duration: 1, delay: 1 }}
+          className="mt-28 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 opacity-20 text-[8px] font-mono tracking-[0.4em]"
+          variants={textVariants}
         >
-          <span className="text-[9px] font-bold uppercase tracking-[0.5em]">Zhafran Atha Razin Hadiny</span>
+          <span>ZHAFRAN ATHA RAZIN HADINY</span>
           <div className="flex items-center gap-4">
-             <div className="w-12 h-[1px] bg-white"></div>
-             <span className="text-[9px] font-bold uppercase tracking-[0.5em]">Portfolio 2026</span>
+             <div className="w-10 h-[1px] bg-white" />
+             <span>CAPABILITIES INDEX // 2026</span>
           </div>
         </motion.div>
 
