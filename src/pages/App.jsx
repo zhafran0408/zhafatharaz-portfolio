@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import OpeningScreen from './OpeningScreen';
 import Navbar from './Navbar';
 import Home from './Home';
 import About from './About';
@@ -9,47 +11,51 @@ import Journey from './Journey';
 import SocialMedia from './SocialMedia';
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
-    <div className="relative bg-[#F2F2F2] overflow-x-hidden text-black min-h-screen">
-      {/* Komponen Navigasi Global */}
-      <Navbar />
-      
-      <main>
-        {/* Seksi Utama / Jumbotron */}
-        <section id="home">
-          <Home />
-        </section>
+    <div className="relative bg-[#080808] overflow-x-hidden text-white min-h-screen font-sans selection:bg-[#8B5CF6]/30 selection:text-white">
+      <AnimatePresence mode="wait">
+        {isLoading && (
+          <OpeningScreen key="loader" onComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
 
-        {/* Seksi Tentang Saya */}
-        <section id="about">
-          <About />
-        </section>
+      {!isLoading && (
+        <div className="w-full min-h-screen flex flex-col justify-between relative z-10">
+          <Navbar />
+          
+          <main className="w-full flex-grow">
+            <section id="home">
+              <Home />
+            </section>
 
-        {/* Seksi Galeri Proyek */}
-        <section id="projects">
-          <Projects />
-        </section>
+            <section id="about">
+              <About />
+            </section>
 
-        {/* Seksi Keahlian Teknis */}
-        <section id="skills">
-          <Skills />
-        </section>
+            <section id="projects">
+              <Projects />
+            </section>
 
-        {/* Seksi Sertifikasi & Pencapaian Interaktif */}
-        <section id="achievement">
-          <Achievement />
-        </section>
+            <section id="skills">
+              <Skills />
+            </section>
 
-        {/* Seksi Pengalaman / Linimasa Perjalanan */}
-        <section id="journey">
-          <Journey />
-        </section>
+            <section id="achievement">
+              <Achievement />
+            </section>
 
-        {/* Seksi Sosial Media / Kontak */}
-        <section id="contact">
-          <SocialMedia />
-        </section>
-      </main>
+            <section id="journey">
+              <Journey />
+            </section>
+
+            <section id="contact">
+              <SocialMedia />
+            </section>
+          </main>
+        </div>
+      )}
     </div>
   );
 }
